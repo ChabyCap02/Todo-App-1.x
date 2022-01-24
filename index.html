@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/estilo.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+        <title>Document</title>
+    </head>
+    <body onload="cargarApp()">
+        <div class="container">
+            <div class="container-input container ">
+                <h1>Todo App</h1>
+                <div class="container-controls border border-2 rounded-2 p-4">
+                    <form class="">
+                        <div class="form-floating mb-2">
+                            <input id="note-title" type="text" placeholder="Title Note" class=" form-control" required autocomplete="off">
+                            <label for="note-title" class="">Title Note</label>
+                            <div class="invalid-feedback">
+                                Please Note Title
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            <textarea id="note-description" cols="30" rows="2" placeholder="Description Note" class=" form-control" required></textarea>
+                            <label for="note-description" class="">Description</label>
+                        </div>
+                        <div class="input-group mt-2">
+                            <label for="" class="input-group-text">Importacia</label>
+                            <select id="note-color" class="form-select ">
+                                <option value="1" class="btn btn-outline-success">Nivel 1</option>
+                                <option value="2" class="btn btn-outline-warning">Nivel 2</option>
+                                <option value="3" class="btn btn-outline-danger">Nivel 3</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button class=" mt-3 btn btn-outline-success " id="note-submit" onclick="crearNota()">Add Note</button>
+                    
+                </div>
+            </div>
+
+            <div class="container-notes mt-3">
+                <div class="notes">
+                    <ul class="container-notes__ul d-flex flex-wrap" id="container-notes__ul">
+                             
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <script src="js/notas.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
