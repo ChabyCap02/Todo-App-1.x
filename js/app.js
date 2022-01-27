@@ -68,19 +68,13 @@ const pintarNotas = () => {
 
 }
 const eliminarNota = (index) =>{
-    
     listaNotas.splice(index,1)
-    
-    console.log(index)
     pintarNotas()
 }
 
 const editarNota = (element) => {
-    console.log(element);
-
     let newDescription = prompt('Nueva Description')
     listaNotas[element]._description = newDescription;
-    console.log(listaNotas);
     pintarNotas();
 
 }
