@@ -10,7 +10,8 @@ let colorNote = document.getElementById('note-color')
 let btnSubmit = document.getElementById('note-submit');
 
 const cargarApp = () => {
-    containerNotes.innerHTML = ' ';
+    pintarNotas()
+    
 }
 
 const crearNota = () => {
@@ -24,21 +25,15 @@ const crearNota = () => {
     console.log(listaNotas)
     titleNote.value = '';
     descriptionNote.value = '';
-}
-
-const eliminarNota = (element) =>{
-    
-    let eliminados = listaNotas.splice(element-1,1)
-    console.log(listaNotas);
-    console.log(element)
-    console.log('eliminados', eliminados)
-    pintarNotas()
+    colorNote.value = 1;
 }
 
 const pintarNotas = () => {
-    
+    containerNotes.innerHTML= ' '
     let opcion = '';
-    let listaNotasHTML = "";
+    let listaNotasHTML = [];
+    
+    index = 0
 
     for(let i of listaNotas){
         switch(i.nivel){
@@ -53,15 +48,39 @@ const pintarNotas = () => {
                 break;
             
         };
+        
+   
         let notaHTML = `<li class="container border ${opcion} mt-2 p-2 d-grid position-relative row">
         <div class="container col mt-2">
             <h3>${i.nombre}</h3>
             <p>${i.description}</p>
-        </div><button class="btn" onclick=(eliminarNota(${i.idNota}))><i class="bi bi-trash"></i></button></li>`
+        </div>\
+        <div class="container text-center"><button class="btn" onclick=(editarNota(${index}))><i class="bi bi-pencil-square"></i></button>
+        <button class="btn" onclick=(eliminarNota(${index++}))><i class="bi bi-trash"></i></button></li></div>`
     
-        listaNotasHTML += notaHTML;
+        listaNotasHTML.push(notaHTML)
+    } 
     
-    }
-    containerNotes.innerHTML = listaNotasHTML;
+    listaNotasHTML.forEach(element => {
+        containerNotes.innerHTML +=element
+    });
+     
+
+}
+const eliminarNota = (index) =>{
+    
+    listaNotas.splice(index,1)
+    
+    console.log(index)
+    pintarNotas()
+}
+
+const editarNota = (element) => {
+    console.log(element);
+
+    let newDescription = prompt('Nueva Description')
+    listaNotas[element]._description = newDescription;
+    console.log(listaNotas);
+    pintarNotas();
 
 }
